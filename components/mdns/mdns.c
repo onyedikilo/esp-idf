@@ -3176,10 +3176,8 @@ static void _mdns_handle_system_event(esp_event_base_t event_base,
             case IP_EVENT_GOT_IP6:
             {
                 mdns_if_t mdns_if = _mdns_get_if_from_esp_netif(interface);
-                if (mdns_if != MDNS_IF_MAX) {
-                    _mdns_enable_pcb(mdns_if, MDNS_IP_PROTOCOL_V6);
-                    _mdns_announce_pcb(mdns_if, MDNS_IP_PROTOCOL_V4, NULL, 0, true);
-                }
+                _mdns_enable_pcb(mdns_if, MDNS_IP_PROTOCOL_V6);
+                _mdns_announce_pcb(mdns_if, MDNS_IP_PROTOCOL_V4, NULL, 0, true);
 
             }
                 break;
